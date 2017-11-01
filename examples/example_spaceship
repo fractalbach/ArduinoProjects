@@ -1,0 +1,51 @@
+// Example - Spaceship Interface
+
+
+
+// setup() only runs once.  It happens when the Arduino starts up.
+// Pins 3, 4, and 5 are connected to the LED's.  These will be output.
+// pin 2 is connected to the switch, which will be the input.
+
+void setup() {
+    pinMode(3, OUTPUT);     // Green LED
+    pinMode(4, OUTPUT);     // Blue LED
+    pinMode(5, OUTPUT);     // Red LED
+    pinMode(2, INPUT);      // switch
+}
+
+// Declare the switchState variable as an integer.
+
+int switchState = 0;
+
+// loop() occurs continuously.  It's used to check for voltages on inputs.
+// digitalRead checks a specified pin for voltage.
+
+
+void loop() {
+    switchState = digitalRead(2);
+
+    // If the switch is off, then turn on the red LED.
+
+    if (switchState == LOW) {
+        digitalWrite(3, HIGH);
+        digitalWrite(4, LOW);
+        digitalWrite(5, LOW);
+
+    } else {
+
+        // if the switch is not off (assuming it is on) then do the green LED.
+        digitalWrite(3, LOW);
+        digitalWrite(4, LOW);
+        digitalWrite(5, HIGH);
+
+
+        // Wait for 1 second, and then toggle the lights.
+        delay(1000); 
+        digitalWrite(4, HIGH);
+        digitalWrite(5, LOW);
+        delay(1000); 
+    }
+
+
+
+}
